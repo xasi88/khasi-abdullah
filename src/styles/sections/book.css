@@ -1,0 +1,24 @@
+.book-layout { display: grid; grid-template-columns: minmax(200px, 240px) 1fr; align-items: start; gap: var(--s-7); }
+.book-cover-print { position: sticky; top: calc(var(--header-h) + var(--s-5)); }
+
+.book-meta { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0 0 var(--s-5); }
+
+.book-meta span {
+  padding: 6px 14px;
+  background: var(--card);
+  border: 1px solid var(--card-rule);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.book-impact { display: flex; align-items: center; gap: var(--s-5); max-width: 34em; margin: var(--s-6) 0 var(--s-4); }
+.book-impact span { color: var(--accent); font-family: var(--serif); font-size: clamp(3rem, 2.4rem + 2vw, 4.5rem); letter-spacing: -0.03em; line-height: 0.9; }
+.book-impact p { margin: 0; font-size: 1.0625rem; line-height: 1.45; }
+.book-links { margin-top: var(--s-4); }
+
+@media (max-width: 700px) {
+  .book-layout { grid-template-columns: 1fr; }
+  .book-cover-print { position: static; max-width: 220px; }
+}

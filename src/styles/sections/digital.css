@@ -1,0 +1,12 @@
+.digital .chips { margin-bottom: var(--s-5); }
+.digital-disclaimer { max-width: 40em; margin-bottom: var(--s-7); color: var(--fg-muted); }
+
+.project.featured { border-left: 4px solid var(--saffron); }
+.project .status { order: 3; }
+.project .disclosure-icon { order: 4; }
+
+@media (max-width: 560px) {
+  .project > summary { row-gap: var(--s-3); }
+  .project .disclosure-title { flex-basis: calc(100% - 120px); }
+  .project .status { order: 5; margin-left: calc(1.75rem + var(--s-4)); }
+}

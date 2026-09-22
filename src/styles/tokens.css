@@ -1,0 +1,55 @@
+:root {
+  /* Палитра из docs/DESIGN-SYSTEM.md */
+  --paper: #f4f1ea;
+  --paper-deep: #e8e2d6;
+  --sage: #e1e7da;
+  --surface: #fbf9f4;
+  --ink: #182019;
+  --forest: #1d2821;
+  --moss: #2e5942;
+  --saffron: #d7a94b;
+  --ochre: #7a5710;
+
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Arial, Helvetica, sans-serif;
+
+  /* Роли: тёмные секции и тона переопределяют только их */
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --fg-muted: #48554d;
+  --accent: var(--moss);
+  --mark: var(--ochre);
+  --rule: rgba(24, 32, 25, 0.16);
+  --card: var(--surface);
+  --card-rule: rgba(24, 32, 25, 0.12);
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --radius: 6px;
+  --container: min(1240px, 100% - 64px);
+  --header-h: 68px;
+  --ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+
+  /* Едва заметная бумажная фактура */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .09 0 0 0 0 .11 0 0 0 0 .09 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tone-deep { --bg: var(--paper-deep); }
+.tone-sage { --bg: var(--sage); }
+
+.is-dark {
+  --bg: var(--forest);
+  --fg: var(--paper);
+  --fg-muted: rgba(244, 241, 234, 0.8);
+  --accent: var(--saffron);
+  --mark: var(--saffron);
+  --rule: rgba(244, 241, 234, 0.26);
+  --card: rgba(244, 241, 234, 0.06);
+  --card-rule: rgba(244, 241, 234, 0.2);
+}

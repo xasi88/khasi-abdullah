@@ -1,0 +1,4 @@
+# Local preview and editor files
+__pycache__/
+.DS_Store
+Thumbs.db

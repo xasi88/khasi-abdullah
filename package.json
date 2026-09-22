@@ -1,0 +1,11 @@
+{
+  "name": "xasi-abdullah-portrait",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Локальный статический прототип личного сайта Хаси Абдуллаха.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/verify.mjs",
+    "preview": "npm run build && python -m http.server 4173"
+  }
+}

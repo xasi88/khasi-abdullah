@@ -1,0 +1,52 @@
+.method {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-4);
+  margin: 0 0 var(--s-7);
+  padding: 0;
+  counter-reset: step;
+  list-style: none;
+}
+
+.method li {
+  position: relative;
+  padding: var(--s-4) var(--s-4) var(--s-4) 60px;
+  background: var(--card);
+  border: 1px solid var(--card-rule);
+  border-radius: var(--radius);
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.25;
+  counter-increment: step;
+}
+
+.method li::before {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--paper);
+  background: var(--moss);
+  border-radius: 50%;
+  content: counter(step);
+  font: 700 0.875rem var(--sans);
+}
+
+.valerik-layout { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; align-items: start; gap: var(--s-7); }
+.valerik-print { position: sticky; top: calc(var(--header-h) + var(--s-5)); }
+
+@media (max-width: 900px) {
+  .method { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .valerik-layout { grid-template-columns: 1fr; }
+  .valerik-print { position: static; max-width: 320px; }
+}
+
+@media (max-width: 480px) {
+  .method { grid-template-columns: 1fr; }
+}
