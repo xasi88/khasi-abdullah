@@ -6,7 +6,6 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/verify.mjs",
-    "preview": "npm run build && python -m http.server 4173",
-    "preview:stalled": "npm run build && node scripts/stalled-preview.mjs"
+    "preview": "npm run build && python -m http.server 4173"
   }
 }

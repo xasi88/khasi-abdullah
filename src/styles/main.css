@@ -1,4 +1,4 @@
-/* Entry point: native CSS layers. npm run build inlines every file below into index.html. Responsive rules live next to the rules they adjust. */
+/* Entry point: native CSS layers, no build step. Responsive rules live next to the rules they adjust. */
 @layer tokens, base, components, sections;
 
 @import url('./tokens.css') layer(tokens);
