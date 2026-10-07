@@ -44,6 +44,7 @@ docs/                   решения, факты, материалы, QA и п
 | `npm run build` | собирает `index.html` из фрагментов |
 | `npm run check` | проверяет обязательные файлы, внутренние якоря и точки входа |
 | `npm run preview` | build + локальный сервер на 4173 |
+| `npm run preview:stalled` | build + сервер на 4174 с задержкой стилей — проверка предупреждения о сети |
 
 `package.json` не содержит runtime или development dependencies: это удобный интерфейс нативных команд Node/Python, а не зависимая сборка.
 

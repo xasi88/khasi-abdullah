@@ -17,10 +17,65 @@
 <meta property="og:image:height" content="1200">
 <meta name="twitter:card" content="summary_large_image">
 <title>Хаси Абдуллах — польза в конкретных делах</title>
-<link rel="stylesheet" href="src/styles/main.css">
+<style>
+  @layer fallback { img { max-width: 100%; height: auto; } }
+  .network-notice { position: fixed; z-index: 100; right: 16px; bottom: 16px; left: 16px; max-width: 34em; margin: 0 auto; padding: 16px 20px; color: #f4f1ea; background: #1d2821; border-left: 4px solid #d7a94b; border-radius: 6px; font: 16px/1.5 Arial, Helvetica, sans-serif; }
+  .network-notice p { margin: 0 0 12px; }
+  .network-notice p:first-child { font: 1.2rem/1.25 Georgia, 'Times New Roman', serif; }
+  .network-notice button { min-height: 48px; margin-right: 12px; padding: 10px 22px; color: #1d2821; background: #f4f1ea; border: 1px solid #f4f1ea; border-radius: 999px; font: inherit; font-weight: 700; cursor: pointer; }
+  .network-notice button + button { color: #f4f1ea; background: transparent; }
+  .network-notice button:focus-visible { outline: 3px solid #d7a94b; outline-offset: 3px; }
+  @media print { .network-notice { display: none; } }
+</style>
+<script>
+  (() => {
+    let state = '';
+    const find = (selector) => document.querySelector(selector);
+
+    const show = (kind, text) => {
+      const notice = find('[data-network-notice]');
+      if (!notice || state === 'failed' || state === 'closed') return;
+      state = kind;
+      notice.firstElementChild.textContent = text;
+      notice.hidden = false;
+    };
+
+    setTimeout(() => {
+      if (document.readyState === 'complete') return;
+      const css = find('#site-css');
+      // Стили не дошли: показываем страницу без них (docs/ARCHITECTURE.md).
+      if (css && !css.loaded) { css.after(css.cloneNode()); css.remove(); }
+      show('slow', 'Страница загружается дольше обычного.');
+    }, 8000);
+
+    addEventListener('load', () => {
+      if (state === 'slow') find('[data-network-notice]').hidden = true;
+    });
+
+    addEventListener('error', (event) => {
+      const target = event.target;
+      if (target.tagName === 'IMG' || target.rel === 'stylesheet') show('failed', 'Страница загрузилась не полностью.');
+    }, true);
+
+    addEventListener('click', (event) => {
+      const action = event.target.dataset && event.target.dataset.networkAction;
+      if (action === 'reload') location.reload();
+      if (action !== 'close') return;
+      find('[data-network-notice]').hidden = true;
+      state = 'closed';
+    });
+  })();
+</script>
+<link rel="stylesheet" href="src/styles/main.css" id="site-css" onload="this.loaded=1">
 <script type="module" src="src/js/main.js"></script>
   </head>
   <body>
+    <div class="network-notice" role="status" data-network-notice hidden>
+  <p></p>
+  <p>Причина — сбои или блокировки в сети. От сайта это не зависит. Включите VPN или, наоборот, выключите его. Затем обновите страницу.</p>
+  <button type="button" data-network-action="reload">Обновить</button>
+  <button type="button" data-network-action="close">Закрыть</button>
+</div>
     <a class="skip-link" href="#main">Перейти к содержанию</a>
 <div class="reading-progress" aria-hidden="true"><span></span></div>
 
