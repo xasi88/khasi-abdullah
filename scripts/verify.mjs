@@ -1,9 +1,10 @@
 import { access, readdir, readFile } from 'node:fs/promises';
 import { relative, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { gzipSync } from 'node:zlib';
+import { projectRoot as root, renderPage } from './render.mjs';
 
-const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const MAX_LINES = 150;
+const EARLY_NOTICE_BUDGET = 2048;
 const requiredFiles = [
   'index.html',
   'src/styles/main.css',
@@ -35,8 +36,28 @@ if (html.includes('href="#"')) {
   throw new Error('Найдена пустая ссылка href="#". Используйте настоящую цель или уберите ссылку.');
 }
 
-if (!html.includes('src/js/main.js') || !html.includes('src/styles/main.css')) {
-  throw new Error('Точка входа должна подключать модульный JS и модульный CSS.');
+// Git на Windows может заменить переводы строк при checkout — сравниваем без учёта этого.
+const sameLineEndings = (text) => text.replaceAll('\r\n', '\n');
+
+if (sameLineEndings(html) !== sameLineEndings(await renderPage())) {
+  throw new Error('index.html отстал от исходников в src/ — запустите npm run build.');
+}
+
+if (/<link[^>]+rel="stylesheet"|<script[^>]+\ssrc=/.test(html)) {
+  throw new Error('Стили и сценарии встраиваются в index.html: <link rel="stylesheet"> и <script src> не используйте.');
+}
+
+// Предупреждение о сети должно дойти до посетителя раньше всего остального, даже если загрузка оборвётся.
+const noticeStart = html.indexOf('data-network-notice');
+const noticeEnd = html.indexOf('</script>', noticeStart) + '</script>'.length;
+const earlyBytes = gzipSync(html.slice(0, noticeEnd)).length;
+
+if (noticeStart < 0 || noticeEnd > html.indexOf('@layer tokens')) {
+  throw new Error('Предупреждение о сети должно стоять в начале body, до общих стилей.');
+}
+
+if (earlyBytes > EARLY_NOTICE_BUDGET) {
+  throw new Error(`Начало страницы вместе с предупреждением о сети — ${earlyBytes} байт в сжатом виде при пределе ${EARLY_NOTICE_BUDGET}. Сократите head или блок предупреждения.`);
 }
 
 const template = await readFile(resolve(root, 'src/templates/page.html'), 'utf8');
@@ -64,4 +85,4 @@ if (oversized.length) {
   throw new Error(`Файлы длиннее ${MAX_LINES} строк — разделите по смыслу: ${oversized.join(', ')}`);
 }
 
-console.log(`Checks passed: ${requiredFiles.length} files, ${localAnchors.length} internal links, no orphan or oversized source files.`);
+console.log(`Checks passed: ${requiredFiles.length} files, ${localAnchors.length} internal links, page is up to date, network notice takes ${earlyBytes} of ${EARLY_NOTICE_BUDGET} early bytes, no orphan or oversized source files.`);

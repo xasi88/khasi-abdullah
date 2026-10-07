@@ -1,0 +1,57 @@
+<!-- Самодостаточный блок: см. docs/ARCHITECTURE.md -->
+<style>
+  html { background: #f4f1ea; }
+  .network-notice { position: fixed; z-index: 100; right: 16px; bottom: 16px; left: 16px; max-width: 34em; margin-inline: auto; padding: 16px 20px; color: #f4f1ea; background: #1d2821; border-left: 4px solid #d7a94b; border-radius: 6px; font: 16px/1.5 Arial, Helvetica, sans-serif; }
+  .network-notice p { margin: 0 0 8px; }
+  .network-notice .network-notice-title { font: 1.25rem/1.25 Georgia, 'Times New Roman', serif; }
+  .network-notice .network-notice-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 0; }
+  .network-notice button { min-height: 48px; padding: 10px 22px; color: #f4f1ea; background: transparent; border: 1px solid rgba(244, 241, 234, 0.6); border-radius: 999px; font: inherit; font-weight: 700; cursor: pointer; }
+  .network-notice [data-network-reload] { color: #1d2821; background: #f4f1ea; border-color: #f4f1ea; }
+  .network-notice button:focus-visible { outline: 3px solid #d7a94b; outline-offset: 3px; }
+  @media print { .network-notice { display: none; } }
+</style>
+<div class="network-notice" role="status" data-network-notice hidden>
+  <p class="network-notice-title" data-network-title></p>
+  <p>Обычно причина — сбои или блокировки в сети. От сайта это не зависит. Если VPN включён, выключите его. Если выключен — включите. Затем обновите страницу.</p>
+  <p class="network-notice-actions">
+    <button type="button" data-network-reload>Обновить</button>
+    <button type="button" data-network-close>Закрыть</button>
+  </p>
+</div>
+<script>
+  (() => {
+    const notice = document.querySelector('[data-network-notice]');
+    const title = notice.querySelector('[data-network-title]');
+    const shown = new Set();
+    let current = '';
+
+    const show = (kind, text) => {
+      if (shown.has(kind) || current === 'failed') return;
+      shown.add(kind);
+      current = kind;
+      title.textContent = text;
+      notice.hidden = false;
+    };
+
+    const hide = () => {
+      notice.hidden = true;
+      current = '';
+    };
+
+    setTimeout(() => {
+      if (document.readyState !== 'complete') show('slow', 'Страница загружается дольше обычного.');
+    }, 8000);
+
+    addEventListener('load', () => {
+      if (current === 'slow') hide();
+    });
+
+    addEventListener('error', (event) => {
+      if (event.target instanceof HTMLImageElement) show('failed', 'Страница загрузилась не полностью.');
+    }, true);
+
+    document.addEventListener('network-slow', (event) => show(event.detail.kind, event.detail.text));
+    notice.querySelector('[data-network-reload]').addEventListener('click', () => location.reload());
+    notice.querySelector('[data-network-close]').addEventListener('click', hide);
+  })();
+</script>
