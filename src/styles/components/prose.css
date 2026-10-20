@@ -1,0 +1,22 @@
+.prose {
+  max-width: 34em;
+  font-family: var(--serif);
+  font-size: clamp(1.1875rem, 1.05rem + 0.5vw, 1.375rem);
+  line-height: 1.6;
+}
+
+.prose p { margin-bottom: 1.1em; }
+.prose p:last-child { margin-bottom: 0; }
+
+.prose-columns { max-width: none; columns: 2 17em; column-gap: var(--s-7); }
+.prose-columns p { break-inside: avoid; }
+
+.prose-drop > p:first-child::first-letter {
+  float: left;
+  padding: 0.08em 0.12em 0 0;
+  color: var(--accent);
+  font-size: 4.2em;
+  line-height: 0.78;
+}
+
+.lead { max-width: 34em; color: var(--fg-muted); font-size: 1.125rem; line-height: 1.65; }

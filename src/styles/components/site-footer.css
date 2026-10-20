@@ -1,0 +1,17 @@
+.site-footer {
+  color: var(--fg-muted);
+  background: var(--bg) var(--grain);
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+}
+
+.site-footer p { margin: 0; }
+.site-footer span { color: var(--saffron); }
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-5);
+  padding-block: var(--s-5);
+}

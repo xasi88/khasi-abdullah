@@ -1,0 +1,5 @@
+.contact { padding-bottom: clamp(88px, 11vw, 160px); }
+.contact h2 { max-width: 10em; margin-bottom: var(--s-5); font-size: clamp(2.5rem, 1.2rem + 6.5vw, 6.5rem); }
+.contact-text { max-width: 26em; margin-bottom: var(--s-6); color: var(--fg-muted); font-size: 1.1875rem; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.copy-status { min-height: 1.5em; margin: var(--s-4) 0 0; color: var(--saffron); font-size: 0.9375rem; }

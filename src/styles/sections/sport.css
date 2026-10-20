@@ -1,0 +1,17 @@
+.sport-layout { display: grid; grid-template-columns: minmax(200px, 0.8fr) 1.2fr; align-items: start; gap: var(--s-7); }
+
+.sport-figure { display: flex; flex-direction: column; gap: var(--s-2); }
+
+.sport-number {
+  color: var(--accent);
+  font-family: var(--serif);
+  font-size: clamp(6rem, 5rem + 9vw, 12rem);
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+}
+
+.sport-caption { color: var(--fg-muted); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+
+@media (max-width: 760px) {
+  .sport-layout { grid-template-columns: 1fr; gap: var(--s-5); }
+}

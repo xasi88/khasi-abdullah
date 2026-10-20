@@ -1,0 +1,37 @@
+.hero {
+  overflow: hidden;
+  padding-block: clamp(40px, 6vw, 88px) clamp(64px, 8vw, 112px);
+}
+
+.hero::before {
+  position: absolute;
+  top: -22vw;
+  right: -14vw;
+  width: 62vw;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--saffron) 70%, transparent);
+  border-radius: 50%;
+  content: '';
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+}
+
+.hero-roles { max-width: 36em; margin-bottom: var(--s-6); color: var(--accent); font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.03em; }
+.hero-roles span { padding-inline: 6px; color: var(--mark); }
+
+.hero-statement { max-width: 15em; margin-bottom: var(--s-6); font-family: var(--serif); font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.15; }
+.hero-statement em { color: var(--mark); }
+
+.hero-print { position: relative; transform: rotate(1.6deg); transition: transform 0.4s var(--ease); }
+.hero-print:hover { transform: rotate(0deg); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-print { max-width: 520px; transform: none; }
+}
