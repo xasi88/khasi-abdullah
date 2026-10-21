@@ -1,0 +1,38 @@
+/* Хронология: линия растёт вслед за прокруткой, точка года вспыхивает. Класс is-drawing и --line ставит timeline-draw.js */
+@media (prefers-reduced-motion: no-preference) {
+  /* Бледная линия переезжает с рамок пунктов на фон списка, чтобы яркая линия легла над ней, но под точками */
+  .timeline.is-drawing {
+    position: relative;
+    background: linear-gradient(rgba(43, 102, 240, 0.25), rgba(43, 102, 240, 0.25)) 0 0 / 2px 100% no-repeat;
+  }
+
+  .timeline.is-drawing > li { border-left-color: transparent; }
+
+  .timeline.is-drawing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(var(--sky), var(--blue) 60%, var(--deep));
+    box-shadow: 0 0 12px rgba(34, 163, 254, 0.7);
+    transform-origin: top;
+    scale: 1 var(--line, 0);
+  }
+
+  .timeline.is-drawing > li::before {
+    scale: 0.55;
+    opacity: 0.4;
+    transition: scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  }
+
+  .timeline.is-drawing > li.is-lit::before { scale: 1; opacity: 1; animation: timeline-flash 0.9s ease-out; }
+}
+
+@keyframes timeline-flash {
+  0% { box-shadow: 0 0 0 4px var(--bg), 0 0 0 0 rgba(34, 163, 254, 0.9); }
+  40% { box-shadow: 0 0 0 4px var(--bg), 0 0 28px 8px rgba(34, 163, 254, 0.8); }
+  100% { box-shadow: 0 0 0 4px var(--bg), 0 0 14px rgba(34, 163, 254, 0.7); }
+}

@@ -1,4 +1,8 @@
 .metrics-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Цифры не выходят за карточку: «420 000+ ₽» шире карточки на 1024 и 481-560 px. 13.5cqi = ширина карточки / 7,1 строки с запасом */
+.metrics-grid > li { container-type: inline-size; }
+.metrics-grid .big-number { font-size: min(clamp(2rem, 1.5rem + 1.5vw, 2.8rem), 13.5cqi); }
 .metrics-grid p { margin: 0; color: var(--fg-muted); font-weight: 600; line-height: 1.45; }
 .metrics-note { max-width: 70ch; margin: var(--s-5) 0 0; }
 

@@ -17,7 +17,9 @@
 
 .hero .eyebrow { color: var(--sky); }
 
-.hero h1 { margin-bottom: var(--s-4); }
+/* Имя не рвётся посередине слова: «Абдуллах» шире колонки на 900-1100 px. 15cqi = ширина колонки / 6,46 слова с запасом */
+.hero-copy { container-type: inline-size; }
+.hero h1 { margin-bottom: var(--s-4); font-size: min(clamp(2.4rem, 1.2rem + 6vw, 5.4rem), 15cqi); }
 
 .hero-roles { margin-bottom: var(--s-5); color: var(--fog); font-size: 1.05rem; font-weight: 600; }
 
@@ -44,7 +46,7 @@
   filter: blur(48px);
 }
 
-.hero-photo .portrait-circle { max-width: 480px; margin-inline: auto; }
+.portrait-halo { position: relative; max-width: 480px; margin-inline: auto; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }

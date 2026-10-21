@@ -1,0 +1,18 @@
+/* Цифры крутятся барабаном: odometer.js. После остановки скрипт возвращает обычный текст */
+.odo-col { position: relative; display: inline-block; height: 1em; overflow: hidden; vertical-align: top; }
+.odo-sizer { visibility: hidden; }
+
+/* Свой цвет: градиент по тексту не видит движущиеся цифры */
+.odo-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: var(--blue);
+  text-align: center;
+  white-space: pre;
+  transition: translate 1.6s var(--ease-out) var(--odo-delay, 0s);
+}
+
+.is-dark .odo-strip,
+.is-blue .odo-strip { color: var(--accent); }

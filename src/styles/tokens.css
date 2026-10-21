@@ -58,6 +58,9 @@
   --container: min(1200px, 100% - 64px);
   --header-h: 68px;
   --ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+  /* Движение: docs/MOTION.md */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-press: cubic-bezier(0.55, 0, 0.75, 0.2);
 }
 
 .tone-white { --bg: var(--white); --card: var(--ice); }
