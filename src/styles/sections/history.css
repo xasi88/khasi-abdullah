@@ -1,2 +1,22 @@
-.history h2 { max-width: 14em; margin-bottom: var(--s-7); }
-.history-print { max-width: 380px; margin: var(--s-7) 0 0; }
+.history-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.history .prose { font-size: 1.08rem; }
+.history .prose p:first-child::first-letter {
+  float: left;
+  margin: 6px 10px 0 0;
+  font-family: var(--display);
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 0.85;
+  color: var(--blue);
+}
+
+@media (max-width: 900px) {
+  .history-layout { grid-template-columns: 1fr; }
+  .history-photo { max-width: 520px; }
+}

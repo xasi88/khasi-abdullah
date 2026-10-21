@@ -8,31 +8,36 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper) var(--grain);
+  background: var(--ice);
   color: var(--fg);
-  font: 18px/1.6 var(--sans);
+  font: 400 18px/1.65 var(--text);
+  -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 img { display: block; max-width: 100%; height: auto; }
-a { color: inherit; text-underline-offset: 0.2em; }
+a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
 button { font: inherit; color: inherit; }
-::selection { background: var(--saffron); color: var(--forest); }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--sky); color: var(--night); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
 
 h1, h2, h3, p { margin-top: 0; }
 
 h1, h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-  overflow-wrap: anywhere;
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  overflow-wrap: break-word;
   text-wrap: balance;
 }
 
-h1 { margin-bottom: var(--s-5); font-size: clamp(3.25rem, 12vw + 1rem, 7.5rem); line-height: 0.95; }
-h2 { margin-bottom: var(--s-6); font-size: clamp(1.85rem, 1.2rem + 3.6vw, 3.5rem); }
+h1 { margin-bottom: var(--s-5); font-size: clamp(2.4rem, 1.2rem + 6vw, 5.4rem); line-height: 1; }
+h2 { margin-bottom: var(--s-6); font-size: clamp(1.6rem, 1.1rem + 2.4vw, 2.9rem); }
+h3 { font-weight: 800; line-height: 1.25; }
+
+/* Длинный заголовок (больше 5 слов) по брендбуку идёт Manrope 800 */
+.title-long { font-family: var(--text); letter-spacing: -0.01em; }
 
 .container { width: var(--container); margin-inline: auto; }
 
@@ -45,17 +50,15 @@ h2 { margin-bottom: var(--s-6); font-size: clamp(1.85rem, 1.2rem + 3.6vw, 3.5rem
   white-space: nowrap;
 }
 
+.spark { color: var(--spark); }
+
 @media (max-width: 900px) {
   :root { --container: min(100% - 48px, 760px); --header-h: 64px; }
 }
 
 @media (max-width: 560px) {
-  :root { --container: calc(100% - 32px); }
+  :root { --container: calc(100% - 32px); --radius: 16px; }
   body { font-size: 17px; }
-}
-
-@media (max-width: 340px) {
-  h2 { font-size: 1.7rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

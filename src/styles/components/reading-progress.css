@@ -9,5 +9,6 @@
   display: block;
   width: 0;
   height: 100%;
-  background: var(--saffron);
+  background: linear-gradient(90deg, var(--sky), var(--blue), var(--deep));
+  box-shadow: 0 0 12px rgba(34, 163, 254, 0.7);
 }

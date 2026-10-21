@@ -1,6 +1,2 @@
-.work h2 { max-width: 16em; }
-.work-copy { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: var(--s-5) var(--s-7); }
-
-@media (max-width: 900px) {
-  .work-copy { grid-template-columns: 1fr; }
-}
+.work .split { align-items: center; }
+.work .prose { margin-bottom: var(--s-4); color: rgba(255, 255, 255, 0.88); }

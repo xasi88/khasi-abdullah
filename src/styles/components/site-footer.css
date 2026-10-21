@@ -1,17 +1,21 @@
 .site-footer {
-  color: var(--fg-muted);
-  background: var(--bg) var(--grain);
-  border-top: 1px solid var(--rule);
-  font-size: 0.875rem;
+  background: var(--night);
+  color: var(--fog);
+  border-top: 1px solid rgba(147, 168, 208, 0.16);
+  font-size: 0.9rem;
 }
 
 .site-footer p { margin: 0; }
-.site-footer span { color: var(--saffron); }
+.site-footer a { color: var(--white); }
 
 .footer-inner {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--s-2) var(--s-5);
-  padding-block: var(--s-5);
+  gap: var(--s-4) var(--s-6);
+  padding-block: var(--s-6);
 }
+
+.footer-brand { display: flex; align-items: center; gap: 16px; color: var(--white); font-weight: 700; }
+.footer-brand img { width: 58px; height: auto; }

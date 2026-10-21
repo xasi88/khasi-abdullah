@@ -1,15 +1,43 @@
-.digital .chips { margin-bottom: var(--s-5); }
-.digital-disclaimer { max-width: 40em; margin-bottom: var(--s-7); color: var(--fg-muted); }
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-4);
+  margin-bottom: var(--s-5);
+}
 
-.project.featured { border-left: 4px solid var(--saffron); }
-.project .status { order: 3; }
-.project .disclosure-icon { order: 4; }
+.project { display: flex; flex-direction: column; gap: var(--s-3); }
+.project p { margin: 0; color: var(--fg-muted); }
+.project .text-button, .project .button { align-self: flex-start; margin-top: auto; }
 
-/* Ссылку на проект удобно нажимать пальцем: область касания выше строки текста. */
-.project .fine-print a { display: inline-block; margin-block: -12px; padding-block: 12px; color: var(--accent); font-weight: 700; }
+.project--wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--s-3) var(--s-6);
+  padding: var(--s-6);
+  border-color: rgba(34, 163, 254, 0.4);
+  background: linear-gradient(135deg, rgba(43, 102, 240, 0.28), rgba(27, 49, 202, 0.12));
+}
 
-@media (max-width: 560px) {
-  .project > summary { row-gap: var(--s-3); }
-  .project .disclosure-title { flex-basis: calc(100% - 120px); }
-  .project .status { order: 5; margin-left: calc(1.75rem + var(--s-4)); }
+.project--wide .project-top,
+.project--wide > p:not(.project-fact),
+.project--wide .button { grid-column: 1; }
+.project--wide .button { justify-self: start; }
+.project--wide .project-fact { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
+
+.project-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2); }
+.project-top h3 { margin: 0; font-family: var(--display); font-size: 1.3rem; }
+.project--wide .project-top h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem); }
+
+.project .project-fact { color: var(--white); font-weight: 600; }
+/* Искра: одна цифра на экран */
+.project-fact .big-number { color: var(--spark); font-size: clamp(3rem, 2rem + 3vw, 4.6rem); }
+
+.ideas { margin-bottom: var(--s-5); }
+.ideas .disclosure-num { font-family: var(--text); }
+.digital-note { max-width: 70ch; margin: 0; }
+
+@media (max-width: 900px) {
+  .project-grid { grid-template-columns: 1fr; }
+  .project--wide { display: flex; padding: var(--s-5); }
 }

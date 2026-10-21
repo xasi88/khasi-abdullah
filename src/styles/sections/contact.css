@@ -1,5 +1,40 @@
-.contact { padding-bottom: clamp(88px, 11vw, 160px); }
-.contact h2 { max-width: 10em; margin-bottom: var(--s-5); font-size: clamp(2.5rem, 1.2rem + 6.5vw, 6.5rem); }
-.contact-text { max-width: 26em; margin-bottom: var(--s-6); color: var(--fg-muted); font-size: 1.1875rem; }
-.contact-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
-.copy-status { min-height: 1.5em; margin: var(--s-4) 0 0; color: var(--saffron); font-size: 0.9375rem; }
+.contact { text-align: center; }
+.contact-inner { display: flex; flex-direction: column; align-items: center; max-width: 900px; }
+.contact-seal { width: 112px; height: 112px; margin-bottom: var(--s-5); }
+.contact h2 { font-size: clamp(2rem, 1.3rem + 3vw, 3.6rem); }
+.contact-text { max-width: 46ch; margin-bottom: var(--s-6); color: var(--fog); font-size: 1.1rem; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-3);
+  width: 100%;
+  margin-bottom: var(--s-6);
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--s-4);
+  border: 1px solid var(--card-rule);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s var(--ease);
+}
+
+.contact-link:hover { border-color: var(--sky); transform: translateY(-2px); }
+.contact-link b { color: var(--white); }
+.contact-link span:not(.sr-only) { color: var(--sky); font-size: 0.92rem; font-weight: 600; white-space: nowrap; }
+
+.contact-actions { justify-content: center; }
+.copy-status { min-height: 1.6em; margin: var(--s-3) 0 0; color: var(--fog); font-size: 0.92rem; }
+
+@media (max-width: 760px) {
+  .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 400px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}

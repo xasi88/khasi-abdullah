@@ -1,35 +1,52 @@
 .button {
   display: inline-flex;
-  min-height: 52px;
   align-items: center;
   justify-content: center;
-  gap: var(--s-3);
+  gap: 10px;
+  min-height: 52px;
   padding: 12px 26px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 999px;
+  font-weight: 800;
   font-size: 1rem;
-  font-weight: 700;
+  line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s var(--ease), background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover { transform: translateY(-2px); }
-.button-primary { color: var(--bg); background: var(--fg); }
-.button-primary:hover { color: var(--fg); background: var(--saffron); }
-.button-ghost { background: transparent; border-color: var(--fg); }
-.button-ghost:hover { color: var(--bg); background: var(--fg); }
+
+/* На светлом: Синий с белым текстом */
+.button-primary { background: var(--blue); color: var(--white); box-shadow: 0 14px 30px -14px rgba(43, 102, 240, 0.8); }
+.button-primary:hover { background: var(--deep); }
+
+/* На тёмном и синем: белая кнопка с текстом Глубина */
+.is-dark .button-primary,
+.is-blue .button-primary { background: var(--white); color: var(--deep); box-shadow: 0 14px 34px -14px rgba(34, 163, 254, 0.9); }
+.is-dark .button-primary:hover,
+.is-blue .button-primary:hover { background: var(--ice); }
+
+.button-ghost { border-color: var(--card-rule); background: transparent; color: var(--fg); }
+.button-ghost:hover { border-color: var(--accent); }
+
+.button-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .text-button {
-  min-height: 44px;
-  padding: 0;
-  color: var(--accent);
-  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
   border: 0;
-  border-bottom: 2px solid currentColor;
-  font-size: 1rem;
-  font-weight: 700;
+  background: none;
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
   cursor: pointer;
 }
 
-.text-button span { padding-left: var(--s-2); }
+@media (max-width: 420px) {
+  .button-row .button { flex: 1 1 100%; }
+}

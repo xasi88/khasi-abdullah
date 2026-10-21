@@ -1,8 +1,4 @@
-.hurman-note { max-width: 12em; margin: 0 0 var(--s-2); color: var(--saffron); font-family: var(--serif); font-size: 1.5rem; font-style: italic; line-height: 1.25; }
-
-.hurman-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: start; gap: var(--s-7); }
-.hurman-side { display: grid; gap: var(--s-2); }
-
-@media (max-width: 900px) {
-  .hurman-layout { grid-template-columns: 1fr; }
-}
+.hurman { background: radial-gradient(ellipse at 100% 100%, rgba(27, 49, 202, 0.45), transparent 55%), var(--night); }
+.hurman .prose { color: rgba(255, 255, 255, 0.88); }
+.hurman-side { display: flex; flex-direction: column; gap: var(--s-3); }
+.hurman-side .fine-print { margin: 0; }

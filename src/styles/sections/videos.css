@@ -1,0 +1,9 @@
+.videos .split { align-items: center; }
+.videos-card { display: flex; flex-direction: column; gap: var(--s-4); padding: var(--s-6); }
+.videos-card h3 { margin: 0; font-family: var(--display); font-size: 1.25rem; }
+.videos-card p { margin: 0; color: var(--fg-muted); }
+.videos-card .text-button { align-self: flex-start; }
+
+@media (max-width: 560px) {
+  .videos-card { padding: var(--s-5); }
+}

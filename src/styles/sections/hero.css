@@ -1,37 +1,52 @@
 .hero {
-  overflow: hidden;
-  padding-block: clamp(40px, 6vw, 88px) clamp(64px, 8vw, 112px);
+  padding: clamp(48px, 8vw, 104px) 0 clamp(64px, 9vw, 120px);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(34, 163, 254, 0.35), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(27, 49, 202, 0.5), transparent 60%),
+    var(--night);
 }
 
-.hero::before {
-  position: absolute;
-  top: -22vw;
-  right: -14vw;
-  width: 62vw;
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--saffron) 70%, transparent);
-  border-radius: 50%;
-  content: '';
-}
+.hero .decor-rays { --rx: 74%; --ry: 46%; }
 
 .hero-grid {
-  position: relative;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 5vw, 80px);
   align-items: center;
-  gap: clamp(32px, 6vw, 96px);
 }
 
-.hero-roles { max-width: 36em; margin-bottom: var(--s-6); color: var(--accent); font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.03em; }
-.hero-roles span { padding-inline: 6px; color: var(--mark); }
+.hero .eyebrow { color: var(--sky); }
 
-.hero-statement { max-width: 15em; margin-bottom: var(--s-6); font-family: var(--serif); font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.15; }
-.hero-statement em { color: var(--mark); }
+.hero h1 { margin-bottom: var(--s-4); }
 
-.hero-print { position: relative; transform: rotate(1.6deg); transition: transform 0.4s var(--ease); }
-.hero-print:hover { transform: rotate(0deg); }
+.hero-roles { margin-bottom: var(--s-5); color: var(--fog); font-size: 1.05rem; font-weight: 600; }
+
+.hero-statement {
+  margin-bottom: var(--s-5);
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 1rem + 1.6vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.hero-lead { max-width: 52ch; margin-bottom: var(--s-6); color: rgba(255, 255, 255, 0.86); font-size: 1.08rem; }
+
+.hero-photo { position: relative; margin: 0; padding: clamp(12px, 3vw, 32px); }
+
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  inset: -4%;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  opacity: 0.55;
+  filter: blur(48px);
+}
+
+.hero-photo .portrait-circle { max-width: 480px; margin-inline: auto; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-print { max-width: 520px; transform: none; }
+  .hero-photo { order: -1; width: min(300px, 76%); margin-inline: auto; padding: 0; }
 }

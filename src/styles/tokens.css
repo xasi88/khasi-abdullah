@@ -1,27 +1,49 @@
+/* Палитра, шрифты и роли из брендбука: C:\Vibe Codding\Codex\Личный бренд\ПРАВИЛА-СТИЛЯ.md */
+/* Шрифты OFL, лицензии: assets/fonts/OFL-Unbounded.txt и assets/fonts/OFL-Manrope.txt */
+@font-face {
+  font-family: 'Unbounded';
+  src: url('../../assets/fonts/unbounded.woff2') format('woff2');
+  font-weight: 600 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../../assets/fonts/manrope.woff2') format('woff2');
+  font-weight: 400 800;
+  font-display: swap;
+}
+
 :root {
-  /* Палитра из docs/DESIGN-SYSTEM.md */
-  --paper: #f4f1ea;
-  --paper-deep: #e8e2d6;
-  --sage: #e1e7da;
-  --surface: #fbf9f4;
-  --ink: #182019;
-  --forest: #1d2821;
-  --moss: #2e5942;
-  --saffron: #d7a94b;
-  --ochre: #7a5710;
+  --sky: #22a3fe;    /* Небо */
+  --blue: #2b66f0;   /* Синий */
+  --deep: #1b31ca;   /* Глубина */
+  --night: #070b1f;  /* Ночь */
+  --ice: #eaf5ff;    /* Лёд */
+  --fog: #93a8d0;    /* Туман */
+  --spark: #ffc83d;  /* Искра: одна цифра или одно слово на экран */
+  --white: #ffffff;
 
-  --serif: Georgia, 'Times New Roman', serif;
-  --sans: Arial, Helvetica, sans-serif;
+  --display: 'Unbounded', 'Arial Black', sans-serif;
+  --text: 'Manrope', 'Segoe UI', Arial, sans-serif;
 
-  /* Роли: тёмные секции и тона переопределяют только их */
-  --bg: var(--paper);
-  --fg: var(--ink);
-  --fg-muted: #48554d;
-  --accent: var(--moss);
-  --mark: var(--ochre);
-  --rule: rgba(24, 32, 25, 0.16);
-  --card: var(--surface);
-  --card-rule: rgba(24, 32, 25, 0.12);
+  --brand-gradient: linear-gradient(160deg, var(--sky) 0%, var(--blue) 52%, var(--deep) 100%);
+  /* Переход для секций с текстом: Небо уходит в угол, белый текст стоит на Синем и Глубине */
+  --section-gradient:
+    radial-gradient(circle at 92% 0%, rgba(34, 163, 254, 0.95), transparent 42%),
+    linear-gradient(160deg, var(--blue) 0%, var(--deep) 100%);
+
+  /* Роли: тёмные и синие секции переопределяют только их */
+  --bg: var(--ice);
+  --fg: var(--night);
+  --fg-muted: rgba(7, 11, 31, 0.72);
+  --accent: var(--deep);
+  --accent-soft: rgba(43, 102, 240, 0.1);
+  --rule: rgba(27, 49, 202, 0.14);
+  --card: var(--white);
+  --card-rule: rgba(43, 102, 240, 0.14);
+  --card-shadow: 0 18px 40px -24px rgba(27, 49, 202, 0.35);
+  --focus: var(--blue);
 
   --s-1: 4px;
   --s-2: 8px;
@@ -30,26 +52,37 @@
   --s-5: 24px;
   --s-6: 32px;
   --s-7: 48px;
-  --s-8: 64px;
-  --radius: 6px;
-  --container: min(1240px, 100% - 64px);
+  --s-8: 72px;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --container: min(1200px, 100% - 64px);
   --header-h: 68px;
   --ease: cubic-bezier(0.2, 0.75, 0.25, 1);
-
-  /* Едва заметная бумажная фактура */
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .09 0 0 0 0 .11 0 0 0 0 .09 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.tone-deep { --bg: var(--paper-deep); }
-.tone-sage { --bg: var(--sage); }
+.tone-white { --bg: var(--white); --card: var(--ice); }
 
-.is-dark {
-  --bg: var(--forest);
-  --fg: var(--paper);
-  --fg-muted: rgba(244, 241, 234, 0.8);
-  --accent: var(--saffron);
-  --mark: var(--saffron);
-  --rule: rgba(244, 241, 234, 0.26);
-  --card: rgba(244, 241, 234, 0.06);
-  --card-rule: rgba(244, 241, 234, 0.2);
+.is-dark,
+.is-blue {
+  --fg: var(--white);
+  --fg-muted: var(--fog);
+  --accent: var(--sky);
+  --accent-soft: rgba(34, 163, 254, 0.14);
+  --rule: rgba(147, 168, 208, 0.24);
+  --card: rgba(255, 255, 255, 0.05);
+  --card-rule: rgba(147, 168, 208, 0.22);
+  --card-shadow: none;
+  --focus: var(--sky);
+}
+
+.is-dark { --bg: var(--night); }
+
+.is-blue {
+  --bg: var(--deep);
+  --fg-muted: rgba(255, 255, 255, 0.86);
+  --accent: var(--white);
+  --rule: rgba(255, 255, 255, 0.28);
+  --card: rgba(7, 11, 31, 0.22);
+  --card-rule: rgba(255, 255, 255, 0.24);
+  --focus: var(--white);
 }

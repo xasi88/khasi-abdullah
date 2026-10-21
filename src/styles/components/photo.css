@@ -1,0 +1,31 @@
+/* Фото в кадре со скруглением и подписью */
+.photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--card-shadow);
+}
+
+.photo img { width: 100%; }
+
+.photo figcaption {
+  padding: 12px 16px 14px;
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Лицо в круге с белой рамкой, строго по центру: правило кадра из брендбука */
+.portrait-circle {
+  position: relative;
+  aspect-ratio: 1;
+  margin: 0;
+  border: clamp(6px, 1vw, 12px) solid var(--white);
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--brand-gradient);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 30px 80px rgba(7, 11, 31, 0.55), 0 0 90px rgba(34, 163, 254, 0.45);
+}
+
+.portrait-circle img { width: 100%; height: 100%; object-fit: cover; }
