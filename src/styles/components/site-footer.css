@@ -19,3 +19,4 @@
 
 .footer-brand { display: flex; align-items: center; gap: 16px; color: var(--white); font-weight: 700; }
 .footer-brand img { width: 58px; height: auto; }
+.footer-note { flex-basis: 100%; font-size: 0.8rem; opacity: 0.75; }

@@ -558,7 +558,18 @@
   <div class="footer-inner container">
     <p class="footer-brand"><img src="assets/brand/sign-dark.svg" alt="X/A" width="58" height="28">Хаси Абдуллах. Несколько направлений. Один принцип: польза.</p>
     <p>Идея и тексты мои. Вёрстку и код собрал ИИ-ассистент. 2026</p>
+    <p class="footer-note">Сайт считает посещения через Яндекс Метрику и использует cookies.</p>
   </div>
 </footer>
+    <!-- Яндекс Метрика: счётчик «Личный сайт». Исключение из правила «внешние сервисы только по клику» (решение автора 2026-10-23): строка о Метрике стоит в подвале. На компьютере автора (localhost) молчит. -->
+<script>
+(function () {
+  if (/^(localhost|127\.)/.test(location.hostname)) return;
+  window.ym = window.ym || function () { (ym.a = ym.a || []).push(arguments); }; ym.l = Date.now();
+  var s = document.createElement("script"); s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; document.head.appendChild(s);
+  ym(113755312, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+})();
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113755312" style="position:absolute; left:-9999px;" alt=""></div></noscript>
   </body>
 </html>
