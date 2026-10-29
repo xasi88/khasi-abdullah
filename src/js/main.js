@@ -1,13 +1,13 @@
-import { initActiveNavigation } from './modules/active-navigation.js';
-import { initClipboard } from './modules/clipboard.js';
-import { initMenu } from './modules/menu.js';
-import { initOdometer } from './modules/odometer.js';
-import { initParallax } from './modules/parallax.js';
-import { initReadingProgress } from './modules/reading-progress.js';
-import { initReveal } from './modules/reveal.js';
-import { initTimeline } from './modules/timeline.js';
-import { initTimelineDraw } from './modules/timeline-draw.js';
-import { initVideoEmbed } from './modules/video-embed.js';
+import { initActiveNavigation } from './modules/active-navigation.js?v=e45bca42';
+import { initClipboard } from './modules/clipboard.js?v=e45bca42';
+import { initMenu } from './modules/menu.js?v=e45bca42';
+import { initOdometer } from './modules/odometer.js?v=e45bca42';
+import { initParallax } from './modules/parallax.js?v=e45bca42';
+import { initReadingProgress } from './modules/reading-progress.js?v=e45bca42';
+import { initReveal } from './modules/reveal.js?v=e45bca42';
+import { initTimeline } from './modules/timeline.js?v=e45bca42';
+import { initTimelineDraw } from './modules/timeline-draw.js?v=e45bca42';
+import { initVideoEmbed } from './modules/video-embed.js?v=e45bca42';
 
 function initializeSite() {
   initMenu();

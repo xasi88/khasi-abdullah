@@ -1,42 +1,42 @@
 /* Entry point: native CSS layers, no build step. Responsive rules live next to the rules they adjust. */
 @layer tokens, base, components, sections, motion;
 
-@import url('./tokens.css') layer(tokens);
-@import url('./base.css') layer(base);
+@import url('./tokens.css?v=e45bca42') layer(tokens);
+@import url('./base.css?v=e45bca42') layer(base);
 
-@import url('./components/skip-link.css') layer(components);
-@import url('./components/reading-progress.css') layer(components);
-@import url('./components/site-header.css') layer(components);
-@import url('./components/labels.css') layer(components);
-@import url('./components/button.css') layer(components);
-@import url('./components/section-layout.css') layer(components);
-@import url('./components/decor.css') layer(components);
-@import url('./components/prose.css') layer(components);
-@import url('./components/card.css') layer(components);
-@import url('./components/photo.css') layer(components);
-@import url('./components/clip.css') layer(components);
-@import url('./components/disclosure.css') layer(components);
-@import url('./components/site-footer.css') layer(components);
+@import url('./components/skip-link.css?v=e45bca42') layer(components);
+@import url('./components/reading-progress.css?v=e45bca42') layer(components);
+@import url('./components/site-header.css?v=e45bca42') layer(components);
+@import url('./components/labels.css?v=e45bca42') layer(components);
+@import url('./components/button.css?v=e45bca42') layer(components);
+@import url('./components/section-layout.css?v=e45bca42') layer(components);
+@import url('./components/decor.css?v=e45bca42') layer(components);
+@import url('./components/prose.css?v=e45bca42') layer(components);
+@import url('./components/card.css?v=e45bca42') layer(components);
+@import url('./components/photo.css?v=e45bca42') layer(components);
+@import url('./components/clip.css?v=e45bca42') layer(components);
+@import url('./components/disclosure.css?v=e45bca42') layer(components);
+@import url('./components/site-footer.css?v=e45bca42') layer(components);
 
-@import url('./sections/hero.css') layer(sections);
-@import url('./sections/metrics.css') layer(sections);
-@import url('./sections/directions.css') layer(sections);
-@import url('./sections/history.css') layer(sections);
-@import url('./sections/valerik.css') layer(sections);
-@import url('./sections/sport.css') layer(sections);
-@import url('./sections/digital.css') layer(sections);
-@import url('./sections/videos.css') layer(sections);
-@import url('./sections/book.css') layer(sections);
-@import url('./sections/hurman.css') layer(sections);
-@import url('./sections/worldview.css') layer(sections);
-@import url('./sections/work.css') layer(sections);
-@import url('./sections/timeline.css') layer(sections);
-@import url('./sections/now.css') layer(sections);
-@import url('./sections/contact.css') layer(sections);
+@import url('./sections/hero.css?v=e45bca42') layer(sections);
+@import url('./sections/metrics.css?v=e45bca42') layer(sections);
+@import url('./sections/directions.css?v=e45bca42') layer(sections);
+@import url('./sections/history.css?v=e45bca42') layer(sections);
+@import url('./sections/valerik.css?v=e45bca42') layer(sections);
+@import url('./sections/sport.css?v=e45bca42') layer(sections);
+@import url('./sections/digital.css?v=e45bca42') layer(sections);
+@import url('./sections/videos.css?v=e45bca42') layer(sections);
+@import url('./sections/book.css?v=e45bca42') layer(sections);
+@import url('./sections/hurman.css?v=e45bca42') layer(sections);
+@import url('./sections/worldview.css?v=e45bca42') layer(sections);
+@import url('./sections/work.css?v=e45bca42') layer(sections);
+@import url('./sections/timeline.css?v=e45bca42') layer(sections);
+@import url('./sections/now.css?v=e45bca42') layer(sections);
+@import url('./sections/contact.css?v=e45bca42') layer(sections);
 
 /* Движение идёт последним слоем: его переходы главнее переходов секций. docs/MOTION.md */
-@import url('./components/reveal.css') layer(motion);
-@import url('./components/odometer.css') layer(motion);
-@import url('./sections/hero-motion.css') layer(motion);
-@import url('./sections/directions-motion.css') layer(motion);
-@import url('./sections/timeline-motion.css') layer(motion);
+@import url('./components/reveal.css?v=e45bca42') layer(motion);
+@import url('./components/odometer.css?v=e45bca42') layer(motion);
+@import url('./sections/hero-motion.css?v=e45bca42') layer(motion);
+@import url('./sections/directions-motion.css?v=e45bca42') layer(motion);
+@import url('./sections/timeline-motion.css?v=e45bca42') layer(motion);
