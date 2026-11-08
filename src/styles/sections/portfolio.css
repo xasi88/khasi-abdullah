@@ -1,0 +1,31 @@
+/* Раздел «Портфолио»: одна ссылка на все работы, https://portfolio.xasi88.ru/ */
+.portfolio-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-5) var(--s-7);
+  padding: var(--s-7);
+  border-color: rgba(34, 163, 254, 0.4);
+  background: linear-gradient(135deg, rgba(43, 102, 240, 0.28), rgba(27, 49, 202, 0.12));
+}
+
+.portfolio-text {
+  max-width: 46ch;
+  margin: 0 0 var(--s-4);
+  color: var(--white);
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.portfolio-panel .chips { margin-bottom: 0; }
+
+.portfolio-action { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
+.portfolio-action .button { min-height: 56px; padding-inline: var(--s-6); font-size: 1.05rem; }
+.portfolio-action .fine-print { margin: 0; }
+
+@media (max-width: 760px) {
+  .portfolio-panel { grid-template-columns: 1fr; padding: var(--s-5); }
+  .portfolio-action { align-items: stretch; text-align: center; }
+  .portfolio-action .button { justify-content: center; }
+}
